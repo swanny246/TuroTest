@@ -3,6 +3,7 @@ from discord.ext import commands, tasks
 
 token = os.environ['token']
 spam_id = os.environ['spam_id']
+timeout = os.environ['timeout']
 
 pokename = 874910942490677270
 poketox = 875526899386953779
