@@ -43,8 +43,6 @@ async def on_message(message):
               except Exception as e:
                   print(f"Error locking channel: {e}")
                   await message.send("An error occurred while locking the channel.")
-              await message.channel.set_permissions(message.guild.default_role, send_messages=False)
-              await message.channel.send(f'<#{message.channel.id}> locked')
 
     await client.process_commands(message)
 
@@ -58,6 +56,6 @@ async def lock(ctx):
 async def unlock(ctx):
     await ctx.channel.set_permissions(ctx.guild.default_role, send_messages=True)
     await ctx.send(f'{ctx.channel.mention} is now unlocked.')
-    print(f'Channel {ctx.channel.name} locked by {ctx.author.name}.')
+    print(f'Channel {ctx.channel.name} unlocked by {ctx.author.name}.')
     
 client.run(f"{token}")
