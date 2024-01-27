@@ -3,7 +3,7 @@ from discord.ext import commands, tasks
 
 token = os.environ['token']
 spam_id = os.environ['spam_id']
-timeout = os.environ['timeout']
+timeout_secs = os.environ['timeout_secs']
 
 pokename = 874910942490677270
 poketox = 875526899386953779
@@ -34,7 +34,7 @@ async def on_message(message):
 
         if ("Rare Ping" in content or "Regional Ping" in content or "Collection Pings" in content or "Shiny Hunt Pings" in content) and "@" in content:
             try:
-                await client.wait_for('message', timeout=timeout, check=lambda m: m.author != client.user and 'Bots' not in [role.name for role in m.author.roles])
+                await client.wait_for('message', timeout=timeout_secs, check=lambda m: m.author != client.user and 'Bots' not in [role.name for role in m.author.roles])
                 print("Interrupted, not shiny locking!")
             except asyncio.TimeoutError:
               try:
