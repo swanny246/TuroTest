@@ -33,7 +33,7 @@ async def on_message(message):
 
         if ("Rare Ping" in content or "Regional Ping" in content or "Collection Pings" in content or "Shiny Hunt Pings" in content) and "@" in content:
             try:
-                await client.wait_for('message', timeout=12, check=lambda m: m.author != pokename and m.author.id != poketox and m.author.id != p2assistant)
+                await client.wait_for('message', timeout=12, check=lambda m: m.author != client.user and 'Bots' not in [role.name for role in m.author.roles]))
                 print("Interrupted, not shiny locking!")
             except asyncio.TimeoutError:
               try:
