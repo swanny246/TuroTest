@@ -38,11 +38,11 @@ async def on_message(message):
                 print("Interrupted, not shiny locking!")
             except asyncio.TimeoutError:
               try:
-                  await message.channel.set_permissions(ctx.guild.default_role, send_messages=False)
-                  await message.send(f'{ctx.channel.mention} is now locked.')
+                  await message.channel.set_permissions(message.guild.default_role, send_messages=False)
+                  await message.channel.send(f'{message.channel.mention} is now locked.')
               except Exception as e:
                   print(f"Error locking channel: {e}")
-                  await ctx.send("An error occurred while locking the channel.")
+                  await message.send("An error occurred while locking the channel.")
               await message.channel.set_permissions(message.guild.default_role, send_messages=False)
               await message.channel.send(f'<#{message.channel.id}> locked')
 
